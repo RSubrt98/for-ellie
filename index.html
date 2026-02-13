@@ -2,11 +2,13 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Will you be My Valentine Ellie? 🥺💖</title>
+
 <style>
     body {
         margin: 0;
-        height: 100vh;
+        min-height: 100vh;
         background: linear-gradient(135deg, #0f3d2e, #14532d);
         display: flex;
         justify-content: center;
@@ -14,46 +16,60 @@
         font-family: Arial, sans-serif;
         overflow: hidden;
         text-align: center;
+        padding: 20px;
     }
 
     .container {
-        background: white;
-        padding: 40px;
-        border-radius: 15px;
-        box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        background: #f3f4f6; /* light grey */
+        padding: 50px 30px;
+        border-radius: 20px;
+        box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+        width: 100%;
+        max-width: 420px;
     }
 
     h1 {
         color: #ff4b5c;
-        margin-bottom: 30px;
+        font-size: 28px;
+        line-height: 1.3;
+        margin-bottom: 40px;
+    }
+
+    .buttons {
+        display: flex;
+        flex-direction: column;
+        gap: 20px;
     }
 
     button {
-        padding: 15px 30px;
-        font-size: 18px;
-        border: none;
-        border-radius: 15px;
+        padding: 18px;
+        font-size: 20px;
+        border: 1px solid #e5e7eb;
+        border-radius: 20px;
         cursor: pointer;
-        margin: 10px;
         transition: 0.2s ease;
+        width: 100%;
+        background: white; /* white option boxes */
     }
 
     #yes {
         background: #ff4b5c;
         color: white;
+        font-weight: bold;
+        border: none;
     }
 
-    #yes:hover {
-        transform: scale(1.1);
+    #yes:active {
+        transform: scale(0.96);
     }
 
     #no {
-        background: #ccc;
+        color: black; /* black Nou text */
         position: relative;
     }
 
     .big-message {
-        font-size: 28px;
+        font-size: 30px;
         color: #ff4b5c;
         animation: pop 0.5s ease forwards;
     }
@@ -64,12 +80,16 @@
     }
 </style>
 </head>
+
 <body>
 
 <div class="container" id="box">
-    <h1>Will you be my Valentine? 💖</h1>
-    <button id="yes">💕 Yes 💕</button>
-    <button id="no">Nou :( </button>
+    <h1>Will you be My Valentine Ellie? 🥺💖</h1>
+
+    <div class="buttons">
+        <button id="yes">💕 Yes 💕</button>
+        <button id="no">Nou🥺</button>
+    </div>
 </div>
 
 <script>
@@ -77,19 +97,21 @@ const noBtn = document.getElementById("no");
 const yesBtn = document.getElementById("yes");
 const box = document.getElementById("box");
 
-noBtn.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - 100);
-    const y = Math.random() * (window.innerHeight - 50);
+noBtn.addEventListener("touchstart", moveButton);
+noBtn.addEventListener("mouseover", moveButton);
+
+function moveButton() {
+    const x = Math.random() * (window.innerWidth - 120);
+    const y = Math.random() * (window.innerHeight - 60);
     noBtn.style.position = "absolute";
     noBtn.style.left = x + "px";
     noBtn.style.top = y + "px";
-});
+}
 
 yesBtn.addEventListener("click", () => {
-    box.innerHTML = "<div class='big-message'>YAYYY 💖💖💖<br> YIPPPEEEEEE !!!! 🥰</div>";
+    box.innerHTML = "<div class='big-message'>YAYYY 💖💖💖<br>YIPPEEEEEE !!!! 🥰</div>";
 });
 </script>
 
 </body>
-
 </html>
